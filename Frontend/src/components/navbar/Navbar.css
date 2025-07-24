@@ -22,18 +22,18 @@
   border-radius: 50px;
   font-weight: bold;
   cursor: pointer;
+  text-decoration: none;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
 .navbar__login {
-  background-color: #fff;
-  color:#fe7743;
+  color: white;
+  background-color: transparent;
   border: none;
   padding: 0.6rem 1.2rem;
-  border-radius: 50px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
+  text-decoration: none;
 }
 
 .navbar__button:hover {

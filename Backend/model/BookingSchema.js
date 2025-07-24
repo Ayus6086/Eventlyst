@@ -4,22 +4,21 @@ const bookingSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true
+    required: true,
   },
-  event: {
+  eventId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Event",
-    required: true
+    required: true,
   },
-  status: {
-    type: String,
-    enum: ["booked", "cancelled"],
-    default: "booked"
+  qrCode: {
+    type: String, // store base64 or URL of QR code
+    required: true,
   },
   createdAt: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model("Booking", bookingSchema);
+module.exports = mongoose.model("Bookings", bookingSchema);

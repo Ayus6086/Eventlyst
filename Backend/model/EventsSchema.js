@@ -3,39 +3,37 @@ const mongoose = require("mongoose");
 const eventSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    minlength: 10,
-    required: true
+    required: true,
   },
   date: {
     type: Date,
-    required: true
+    required: true,
   },
   time: {
-    type: String,
-    required: true
+    type: String, //15:00
+    required: true,
   },
   capacity: {
     type: Number,
-    required: true
   },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true
+    required: true,
   },
   image: {
     type: String,
-    required: true
+    required: true,
   },
-  tags: {
-    type: [String],
-    enum: ["tech", "music"] 
-  }
-  
+  tags: [String],
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model("Event", eventSchema);
+module.exports = mongoose.model("Events", eventSchema);

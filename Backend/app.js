@@ -1,14 +1,32 @@
-const express = require("express")
-const connectDB = require("./db");
+const express = require("express");
+const connectDb = require("./db");
 const usersRouter = require("./routes/users");
-const eventRouter = require("./routes/Events");
-const app = express()
+const eventsRouter = require("./routes/Events");
+
 require("dotenv").config();
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+
+const app = express();
+
+connectDb();
+
+app.use(cookieParser());
 app.use(express.json());
-//user routes
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
+// users routes
 app.use("/api/v1/users", usersRouter);
-//events routes
-app.use("/api/v1/events", eventRouter);
+
+// events routes
+app.use("/api/v1/events", eventsRouter);
+
 const PORT = process.env.PORT ?? 3001;
-connectDB();
-app.listen(PORT, () => console.log(`Running app on ${PORT}`));
+
+// liste on the port
+app.listen(PORT, () => console.log(`Running app on PORT ${PORT}`));
